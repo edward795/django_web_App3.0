@@ -1,0 +1,141 @@
+{% extends 'home/main.html' %}
+{% load static %}
+{% block content %} 
+
+<div class="container"><br>
+
+{% if messages %}
+{% for message in messages %}
+    {% if message.tags == 'error' %}
+      <div class="alert alert-danger"> 
+        {{ message }}
+      </div>
+    {% elif message.tags == 'success' %}
+      <div class="alert alert-light"> 
+        {{ message }}
+      </div>
+    {% endif %}
+{% endfor %}
+{% endif %}
+
+
+<div class="container">
+ <div class="main_intro">
+   <h3>Welcome to Jobs Platform!</h3>
+   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+ </div>
+</div>
+
+<!-- 
+  <div class="container">
+  <div class="card">
+    <h3 class="title">Card 1</h3>
+    <div class="bar">
+      <div class="emptybar"></div>
+      <div class="filledbar"></div>
+    </div>
+    <div class="circle">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <circle class="stroke" cx="60" cy="60" r="50"/>
+    </svg>
+    </div>
+  </div>
+  <div class="card">
+    <h3 class="title">Card 2</h3>
+    <div class="bar">
+      <div class="emptybar"></div>
+      <div class="filledbar"></div>
+    </div>
+    <div class="circle">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <circle class="stroke" cx="60" cy="60" r="50"/>
+    </svg>
+    </div>
+  </div>
+  <div class="card">
+    <h3 class="title">Card 3</h3>
+    <div class="bar">
+      <div class="emptybar"></div>
+      <div class="filledbar"></div>
+    </div>
+    <div class="circle">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <circle class="stroke" cx="60" cy="60" r="50"/>
+    </svg>
+    </div>
+  </div>
+  <div class="card">
+    <h3 class="title">Card 4</h3>
+    <div class="bar">
+      <div class="emptybar"></div>
+      <div class="filledbar"></div>
+    </div>
+    <div class="circle">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <circle class="stroke" cx="60" cy="60" r="50"/>
+    </svg>
+    </div>
+  </div>
+</div>
+
+</div>
+
+-->
+
+
+<!-- <div class="container">
+<div class="row">
+  <div class="card" style="width: 18rem; margin-left:auto; margin-right:auto; margin-bottom:40px;">
+    <img class="card-img-top" src="{% static '/images/jobs.jpg' %}" alt="Card image cap" width="140" height="120">
+    <div class="card-body">
+      <h5 class="card-title">Job Seekers</h5>
+      <p class="card-text">Job seekers who are in search of jobs please register here.</p>
+      <a href="candidate_register" class="btn btn-primary">Register</a>
+    </div>
+  </div>
+
+  
+
+  <div class="card" style="width: 18rem; margin-left:auto; margin-right:auto; margin-bottom:40px;">
+    <img class="card-img-top" src="{% static 'images/recruiters.jpg' %}" alt="Card image cap" width="140" height="120">
+    <div class="card-body">
+      <h5 class="card-title">Employers</h5>
+      <p class="card-text">Employers who want to recruit please register here.</p>
+      <a href="employer_register" class="btn btn-primary">Register</a>
+    </div>
+  </div>
+
+</div>
+</div> -->
+<div class="container">
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img class="card-img-top" src="{% static '/images/jobs.jpg' %}" alt="Card image cap"/>
+      <h3>Job Seekers!</h3>
+      <p>Those who are in search of jobs or want a better carrer apply through the below link.</p>
+      <a href="candidate_register" class="btn btn-primary">Register</a>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img class="card-img-top" src="{% static 'images/recruiters.jpg' %}" alt="Card image cap"/>
+      <h3>Employers!</h3>
+      <p>Those who wish to provide employments or want to hire people register through below link.</p>
+      <a href="employer_register" class="btn btn-secondary">Register</a>
+    </div>
+  </div>
+  
+</div>
+</div>
+
+
+
+
+</div>
+
+<!--
+SUN IMAGE HERE: https://chivethebrigade.files.wordpress.com/2012/03/sun-920-32.jpg
+-->
+{% endblock %}

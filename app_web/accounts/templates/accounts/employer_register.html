@@ -1,0 +1,152 @@
+{% extends 'home/main.html' %}
+
+{% block content %}
+
+
+<div class="container">
+  <div class="form-background">
+    <h2>Registration for Employers!</h2><br>
+    <form action="employer_register" method="post">
+      {% csrf_token %}
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address(personal)</label>
+          <input type="email" class="form-control"  aria-describedby="emailHelp" placeholder="Enter email" value="{{user.email}}" readonly name="email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address(official company email)</label>
+          <input type="email" class="form-control"  aria-describedby="emailHelp" placeholder="Enter company email" name="company_email" required>
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Company Name</label>
+          <input type="text" class="form-control"  placeholder="Company Name" name="company_name" required>
+        </div>
+
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Name(By default treated as company agent)</label>
+          <input type="text" class="form-control"  placeholder="Name" value="{{user.first_name}} {{user.last_name}}" readonly name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Address</label>
+          <input type="text" class="form-control"  placeholder="address" name="address" required>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">State</label>
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="state" required>
+            <option value="None"selected>select </option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+            <option value="Assam">Assam</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Chandigarh">Chandigarh</option>
+            <option value="Chhattisgarh">Chhattisgarh</option>
+            <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+            <option value="Daman and Diu">Daman and Diu</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Lakshadweep">Lakshadweep</option>
+            <option value="Puducherry">Puducherry</option>
+            <option value="Goa">Goa</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Manipur">Manipur</option>
+            <option value="Meghalaya">Meghalaya</option>
+            <option value="Mizoram">Mizoram</option>
+            <option value="Nagaland">Nagaland</option>
+            <option value="Odisha">Odisha</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Sikkim">Sikkim</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Tripura">Tripura</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="Uttarakhand">Uttarakhand</option>
+            <option value="West Bengal">West Bengal</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Pincode</label>
+          <input type="text" class="form-control"  placeholder="Pincode" inputmode="numeric" maxlength="6" name="pincode" required>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Contact no</label>
+          <input type="tel" class="form-control"  placeholder="Phone no" pattern="[0-9]{10}" name="contactno" required>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">No Of Vacancies</label>
+          <input type="number" class="form-control"  placeholder="No Of Vacancies" name="no_of_vacancies" required>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Job Type</label>
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="jobtypes" required>
+            <option value="None"selected>select </option>
+            <option value="office level">office level</option>
+            <option value="house hold">house hold</option>
+            <option value="Assistants">Assistants</option>
+            <option value="Field Work">Field Work</option>
+            <option value="Plumber,Artisans..">Plumber,Artisans..</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Required Skills</label>
+          <input type="text" class="form-control"  placeholder="Skills" name="skills" required>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Salary Offered(per month)</label>
+           <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="salary" required>
+            <option value="None"selected>select </option>
+            <option value="< 5000">below 5000</option>
+            <option value="5000 - 10000">between 5000 - 10000</option>
+            <option value="10000-150000">between 10000-15000</option>
+            <option value="15000 above">above 15000</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Work Per Day(in hrs)</label>
+           <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="work_hours" required>
+            <option value="None"selected>select </option>
+            <option value="below 5">below 5hrs</option>
+            <option value="7">7hrs</option>
+            <option value="8">8hrs</option>
+            <option value="9">9hrs</option>
+            <option value="above 9">above 9hrs</option>
+            </select>
+        </div>
+        
+        <div class="form-group purple-border">
+          <label for="exampleFormControlTextarea4">Comments</label>
+          <textarea class="form-control"  rows="3" placeholder="Your comments here!" name="comments" required></textarea>
+        </div>
+
+        <!-- <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div> -->
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+  </div>
+</div>
+  {% endblock %}

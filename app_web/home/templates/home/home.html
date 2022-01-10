@@ -1,0 +1,126 @@
+{% extends 'home/main.html' %}
+{% load static %}
+{% block content %} 
+
+<div class="container"><br>
+
+{% if messages %}
+{% for message in messages %}
+    {% if message.tags == 'error' %}
+      <div class="alert alert-danger"> 
+        {{ message }}
+      </div>
+    {% elif message.tags == 'success' %}
+      <div class="alert alert-light"> 
+        {{ message }}
+      </div>
+    {% endif %}
+{% endfor %}
+{% endif %}
+
+<div class="main_intro">
+<div class="heading">
+  <img src="{% static 'images/logo7.png' %}" width="100px" height="100px" style="border-radius: 50%;"><br><br/>
+  <h5>The new carrer site of India for the common people</h5>
+</div>
+</div>
+<br>
+
+<div class="slideshow-container">
+
+  <div class="mySlides fade">
+    <div class="numbertext">1 / 6</div>
+    <img src="{% static '/images/main1.png' %}" style="width:100%">
+    <div class="text">We Work Together!</div>
+  </div>
+  
+  <div class="mySlides fade">
+    <div class="numbertext">2 / 6</div>
+    <img src="{% static '/images/main2.jpg' %}" style="width:100%">
+    <div class="text">We are with you!</div>
+  </div>
+  
+  <div class="mySlides fade">
+    <div class="numbertext">3 / 6</div>
+    <img src="{% static '/images/main3.png' %}" style="width:100%">
+    <div class="text">Let's lay the foundation bricks to your future!</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">4 / 6</div>
+    <img src="{% static '/images/main4.jpg' %}" style="width:100%">
+    <div class="text">Together!</div>
+  </div>
+  <div class="mySlides fade">
+    <div class="numbertext">5 / 6</div>
+    <img src="{% static '/images/main5.png' %}" style="width:100%">
+    <div class="text">Little By Little!</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">6/ 6</div>
+    <img src="{% static '/images/main6.jpg' %}" style="width:100%">
+    <div class="text">Let's give a bright day for our future!</div>
+  </div>
+  
+  </div>
+  <br>
+  
+  <div style="text-align:center">
+    <span class="dot"></span> 
+    <span class="dot"></span> 
+    <span class="dot"></span> 
+    <span class="dot"></span> 
+    <span class="dot"></span> 
+    <span class="dot"></span> 
+  </div>
+
+
+
+<br>
+
+
+
+ <div class="main_intro">
+   <h3 class="heading">Welcome to GlobalMadad!</h3>
+     
+This is the platform where every single person can get the job according to their skills irrespective of their educational qualification.
+Even an illiterate person can get the job through this platform.We are trying our best to provide jobs in the home town/home state of the employee.
+Through this platform we will connect each and every person in the world.We are also helping poor students to pursue their dreams.
+
+  </div>
+</div>
+
+<div class="cards_div">
+<div class="container">
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img class="card-img-top" src="{% static '/images/jobs.jpg' %}" alt="Card image cap"/>
+      <h3>Job Seekers!</h3>
+      <p>Those who are in search of jobs or want a better carrer apply through the below link.</p>
+      <a href="candidate_register" class="btn btn-primary">Register</a>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img class="card-img-top" src="{% static 'images/recruiters.jpg' %}" alt="Card image cap"/>
+      <h3>Employers!</h3>
+      <p>Those who wish to provide employments or want to hire people register through below link.</p>
+      <a href="employer_register" class="btn btn-secondary">Register</a>
+    </div>
+  </div>
+  
+</div>
+</div>
+</div>
+
+
+
+</div>
+
+<!--
+SUN IMAGE HERE: https://chivethebrigade.files.wordpress.com/2012/03/sun-920-32.jpg
+-->
+{% endblock %}

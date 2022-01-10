@@ -1,0 +1,249 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- google fonts apis-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static '/css/cards.css' %}"/>
+    <link rel="stylesheet" href="{% static '/css/form.css' %}"/>
+    <link rel="stylesheet" href="{% static '/css/main_intro.css' %}"/>
+    <link rel="stylesheet" href="{% static '/css/carousal.css' %}"/>
+    <link rel="stylesheet" href="{% static '/css/user_dash.css' %}"/>
+    <link rel ="icon" href ="{% static '/images/logo7.png' %}" type = "image/x-icon">
+    <title>GlobalMadad</title>
+  </head>
+  <body>
+    <div class="main-container">
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          
+          <a class="navbar-brand" href="#">GlobalMadad</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarScroll">
+            
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'home' %} active {% endif %}" aria-current="page" href="/">Home</a>
+              </li>
+        
+              {% if user.is_authenticated %}
+
+              <li class="nav-item">
+                <a class="nav-link" href="#">Hello,{{ user.first_name }}</a>
+              </li>
+                
+              <li class="nav-item">
+                <a class="nav-link" href="logout">Logout</a>
+              </li>
+
+              {% else %}
+
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'register' %}active {% endif %}" href="register">Register</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'login' %} active {% endif %}" href="login">Login</a>
+              </li>
+
+              {% endif %}
+
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'dashboard' %} active {% endif %}" href="dashboard">Dashboard</a>
+              </li>
+          
+             
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'about' %} active {% endif %}" href="about">About us</a>
+              </li>
+          
+               <!-- 
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  others
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li> -->
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'contact' %} active {% endif %}" href="contact">Contact us</a>
+              </li> 
+             
+              <li class="nav-item">
+                <li id="google_translate_element">Contact us</li>
+              </li> 
+    
+            </ul>
+           
+          </div>
+          <form class="d-flex" style="float:right;">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+        
+      </nav>
+      {% block content %} 
+
+
+      {% endblock %}
+
+
+    <footer class="text-center text-lg-start bg-dark text-muted">
+      <!-- Section: Social media -->
+      <section
+        class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+      >
+        <!-- Left -->
+        <div class="me-5 d-none d-lg-block">
+          <span>Get connected with us on social networks:</span>
+        </div>
+        <!-- Left -->
+    
+        <!-- Right -->
+        <div>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+        <!-- Right -->
+      </section>
+      <!-- Section: Social media -->
+    
+      <!-- Section: Links  -->
+      <section class="">
+        <div class="container text-center text-md-start mt-5">
+          <!-- Grid row -->
+          <div class="row mt-3">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+              <!-- Content -->
+              <img src="{% static 'images/logo7.png' %}" width="100px" height="100px" style="border-radius: 50%;float:right;"><br><br/>
+              <h6 class="text-uppercase fw-bold mb-4">
+                <i class="fas fa-gem me-3"></i>GlobalMadad
+              </h6>
+              <p>
+                Our mission is to decrease unemployment.Whether you are literate
+                or illiterate does not matter to us.
+              </p>
+            </div>
+            <!-- Grid column -->
+    
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">
+                Products
+              </h6>
+              <p>
+                <a href="candidate_register" class="text-reset">Candidate Register</a>
+              </p>
+              <p>
+                <a href="employer_register" class="text-reset">Employer Register</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+    
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">
+                Social links
+              </h6>
+              <p>
+                <a href="https://www.facebook.com/GlobalMadad-101484445758064" class="text-reset">Facebook</a>
+              </p>
+              <p>
+                <a href="https://www.instagram.com/globalmadad/" class="text-reset">Instagram</a>
+              </p>
+              <p>
+                <a href="https://chat.whatsapp.com/J4uRjYAwzjD7Fc7EvJKI1j" class="text-reset">whatsapp</a>
+              </p>
+              <p>
+                <a href="#!" class="text-reset">telegram</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+    
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">
+                Contact
+              </h6>
+              <p><i class="fas fa-home me-3"></i> PATNA-800003,BIHAR,INDIA.</p>
+              <p>
+                <i class="fas fa-envelope me-3"></i>
+                globalmadad@gmail.com
+              </p>
+              <p><i class="fas fa-phone me-3"></i> +91 7992346238</p>
+              <p><i class="fas fa-print me-3"></i> +91 7992346238</p>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </div>
+      </section>
+      <!-- Section: Links  -->
+    
+      <!-- Copyright -->
+      <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2022 Copyright:
+        <a class="text-reset fw-bold" href="https://mdbootstrap.com/">globalmadad.com</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+    <!-- Footer -->
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="{% static '/js/cards.js' %}"></script>
+    <script src="{% static '/css/carousal.css' %}"></script>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en',includedLanguages : 'hi,en'}, 'google_translate_element');
+      }
+      </script>
+      
+      <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

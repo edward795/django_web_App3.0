@@ -1,0 +1,68 @@
+{% extends 'home/main.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<div class="user-dash">
+  <div class="container">
+
+        <h5>Welcome to your personalised dashboard!</h5>
+        <hr>
+
+    <div class="profile" class="float-left">
+       <img src="{% static 'images/avatar2.png' %}" width="100px" height="100px;"> 
+    </div>
+
+    <div class="float-right">
+        <li>{{user.username}}</li>
+        <li>{{user.first_name}} {{user.last_name}}</li>
+        <li>{{user.email}}</li>
+    </div>
+  </div>
+
+    <br>
+  <hr style="color:black;"> 
+
+  <div class="container">
+  <div class="row">
+  {% if jobs is not None %}
+      {% for job in jobs %}
+      
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" style="border-radius:5px;">
+            {% if job.isVerified %}
+                <img src="{% static 'images/verified.jpg' %}" width="60px" height="80px"/>
+            {% endif %}
+                <br></br><br></br>
+                <h5>Compnay:{{job.company_name}}</h5> 
+                <p>Job type:{{job.jobtypes}}</p> 
+                <p>Vacancies:{{job.no_of_vacancies}}</p>
+                <button class="btn btn-warning">Salary:{{job.salary}}</button>
+              </div>
+          <div class="flip-card-back" style="border-radius:5px;">
+            <div class="container">
+              <div class="center">
+                <button class="btn btn-secondary" disabled>Apply For Job</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      {% endfor %}
+      </div>
+   
+  {% else %}
+  <h4>Nothing in your dashboard!</h4>
+  <div class="alert alert-danger">Your Dashboard is Empty! </div>
+  
+  {% endif %}
+</div>
+</div>
+
+{% endblock %}

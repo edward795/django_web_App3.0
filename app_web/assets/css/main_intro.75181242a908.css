@@ -1,0 +1,13 @@
+.main_intro{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    /* text-align: center; */
+    background-color:white;
+    background-image: linear-gradient(#bdc3c7 , #2c3e50);
+    border-radius: 5px;
+    color:white;
+}
+
+.heading{
+    text-align: center;
+}
