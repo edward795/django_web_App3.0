@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.timezone import now
 
 # Create your models here.
 class RegisterCandidate(models.Model):
@@ -12,7 +13,9 @@ class RegisterCandidate(models.Model):
     jobtypes=models.TextField()
     skills=models.TextField()
     experience=models.TextField()
-    comments=models.TextField()
+
+    def __str__(self):
+        return self.name
 
 class RegisterEmployer(models.Model):
     email=models.EmailField() 
@@ -29,9 +32,21 @@ class RegisterEmployer(models.Model):
     skills=models.TextField()
     salary=models.TextField()
     comments=models.TextField()
-
-class OpenJobs(RegisterEmployer):
+    jobname=models.TextField()
+    open_date=models.DateTimeField(default=now)
+    close_date=models.DateTimeField(default=now)
     isVerified=models.BooleanField(default=False)
+    
 
     def __str__(self):
-        return self.email
+        return str(self.company_name)+" - "+str(self.jobname)
+
+
+class AppliedJobs(models.Model):
+    jobname=models.ForeignKey(RegisterEmployer,blank=True,null=True,on_delete=models.SET_NULL)
+    name=models.TextField()
+    email=models.EmailField()
+    apply_date=models.DateTimeField(default=now)
+
+    def __str__(self):
+        return str(self.name)+" - "+str(self.jobname)

@@ -1,0 +1,35 @@
+{% extends 'home/main.html' %}
+
+{% block content %}
+
+<div class="container">
+    {% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'error' %}
+          <div class="alert alert-danger"> 
+            {{ message }}
+          </div>
+        {% elif message.tags == 'success' %}
+          <div class="alert alert-dark"> 
+            {{ message }}
+          </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+<div class="user-dash">
+ <div class="alert alert-success">
+    Successfully applied for the job!
+ </div>
+ <h6><a href="/dashboard">Go Back</a></h6>
+ <div class="form-background">
+  <li>Applied Company:{{applied_job.company_name}}</li>
+  <li>Applied JobName:{{applied_job.jobname}}</li>
+  <li>Applied Jobtype:{{applied_job.jobtypes}}</li>
+ </div>
+
+ </div>
+</div>
+</div>
+</div>
+</div>
+  {% endblock %}
