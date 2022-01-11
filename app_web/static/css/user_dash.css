@@ -5,9 +5,6 @@
   margin:20px;
 }
 
-.user-dash img{
-  float:left;
-}
 
 .header-dash{
   background-color: green;
@@ -70,42 +67,12 @@
   transform: translate(-50%, -50%);
 }
 
+.container-apply{
+  text-align: center;
+  display:block;
+}
 
-
-  table, th, td {
-    border: 2px solid black;
-    padding:5px;
-  }
-
-  .profile img{
-    margin:10px;
+.flip-card-front img{
+   float:left;
+}
   
-  }
-
-
-@media screen and (min-width: 1200px) {
-
-.details {
-  float:right;
- }
-
-.profile::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-
-}
-
-@media screen and (max-width: 600px) {
-  .profile img{
-    margin-left:80px;
-  }
- 
-  table{
-    margin-left:40px;
-  }
-  .stats{
-    margin-left:40px;
-  }
-}

@@ -7,36 +7,29 @@
 
 <div class="user-dash">
   <div class="container">
-    <div class="profile">
+
+    <div class="container-apply">
+      
+    
         <h5>Welcome to your personalised dashboard!</h5>
         <hr>
-
-    
-       <img src="{% static 'images/avatar2.png' %}" width="100px" height="100px;"> 
-    
-
-    <div class="details">
-
-      <table>
-        <tr><td>Username</td><td>{{user.username}}</td></tr>
-        <tr><td>Fullname</td><td>{{user.first_name}} {{user.last_name}}</td></tr>
-        <tr><td>Email</td><td>{{user.email}}</td></tr>
-      </table>
-    </div>
-  </div>
-</div>
-    <br>
-  <hr style="color:black;"> 
-
-  <div class="container">
-    <button type="button" class="btn btn-primary mb-3">
-      Applied Jobs <span class="badge bg-secondary">{{no_of_jobs}}</span>
-    </button>
-  </div>
-
+     <img src="{% static 'images/avatar2.png' %}" width="100px" height="100px;" style="border-radius:50%;"> <br></br>
+      <span class="badge bg-secondary">{{user.first_name}} {{user.last_name}}</span>
+      <span class="badge bg-secondary">{{user.email}}</span>
+      <span class="badge bg-secondary">{{user.username}}</span>
+       <hr>
+   </div>
+       <div class="container-apply">
+ 
+      <button type="button" class="btn btn-primary mb-3 ">
+            Applied Jobs <span class="badge bg-secondary">{{no_of_jobs}}</span>
+          </button>
+        </div>
+     
+      
   <hr style="color:black;">
   
-  <div class="container">
+
   <div class="row">
     {% if messages %}
     {% for message in messages %}
@@ -83,7 +76,7 @@
                     <input type="hidden" value="{{user.first_name}} {{user.last_name}}" name="name">
                     <input type="hidden" value="{{user.email}}" name="email">
                     {% if job.job_closed %}
-                    <button type="submit" class="btn btn-secondary disabled">Apply</button>
+                    <button type="submit" class="btn btn-danger disabled">Closed!</button>
                     {% else %}
                     <button type="submit" class="btn btn-secondary">Apply</button>
                     {% endif %}
@@ -108,8 +101,9 @@
   <div class="alert alert-danger">Your Dashboard is Empty! </div>
   
   {% endif %}
-</div>
 
+
+</div>
 </div>
 
 {% endblock %}
