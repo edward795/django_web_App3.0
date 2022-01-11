@@ -59,6 +59,7 @@ def employer_register(request):
         jobname=request.POST['jobname']
         open_date=request.POST['open_date']
         close_date=request.POST['close_date']
+        
 
         employer_object=RegisterEmployer(email=email,company_email=company_email,name=name,address=address,state=state,pincode=pincode,salary=salary,
         jobtypes=jobtypes,skills=skills,work_hours=work_hours,comments=comments,contactno=contactno,no_of_vacancies=no_of_vacancies,company_name=company_name,jobname=jobname,

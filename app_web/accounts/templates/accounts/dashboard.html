@@ -64,12 +64,17 @@
                 <br></br><br></br>
                 <h5>Vacancy:{{job.jobname}}</h5> 
                 <p>Job type:{{job.jobtypes}}</p> 
-                <small>{{ job.open_date }}-{{ job.close_date }}</small>
+                {% if job.job_closed %}
+                <span class="badge bg-danger">closed</span><span class="badge rounded-pill bg-dark">{{ job.open_date | date:"d-m-Y" }} - {{ job.close_date | date:"d-m-Y" }}</span><br></br>
+                {% else %}
+                <span class="badge bg-success">open</span><span class="badge rounded-pill bg-dark">{{ job.open_date | date:"d-m-Y" }} - {{ job.close_date | date:"d-m-Y" }}</span><br></br>
+                {% endif %}
                 <button class="btn btn-warning">Salary:{{job.salary}}</button>
               </div>
           <div class="flip-card-back" style="border-radius:5px;">
             <div class="container">
               <div class="center">
+
                 {% if job.id in applied_list %}
                     <button type="submit" class="btn btn-success">Already Applied!</button>
                 {% else %}
@@ -77,7 +82,11 @@
                     {% csrf_token %}
                     <input type="hidden" value="{{user.first_name}} {{user.last_name}}" name="name">
                     <input type="hidden" value="{{user.email}}" name="email">
+                    {% if job.job_closed %}
+                    <button type="submit" class="btn btn-secondary disabled">Apply</button>
+                    {% else %}
                     <button type="submit" class="btn btn-secondary">Apply</button>
+                    {% endif %}
                   </form>
                 {% endif %}
 
