@@ -114,14 +114,21 @@ def login(request):
         username=request.POST['username']
         password=request.POST['password']
         
-        user=auth.authenticate(username=username,password=password)
-        if user is not None:
-            auth.login(request,user)
-            messages.success(request,"successfully logged in!!")
-            return redirect("dashboard")
-        else:
-            messages.error(request,"invalid credentials!!")
-            return redirect("login")
+        try:
+            user=auth.authenticate(username=username,password=password)
+            if user is not None:
+                auth.login(request,user)
+                messages.success(request,"successfully logged in!!")
+                return redirect("dashboard")
+            else:
+                username=User.objects.get(email=username.lower()).username
+                user=auth.authenticate(username=username,password=password)
+                auth.login(request,user)
+                messages.success(request,"successfully logged in!!")
+                return redirect("dashboard")
+        except:
+               messages.error(request,"invalid credentials!!")
+               return redirect("login")
 
     return render(request,'accounts/login.html')
 

@@ -65,28 +65,29 @@
                 <button class="btn btn-warning">Salary:{{job.salary}}</button>
               </div>
           <div class="flip-card-back" style="border-radius:5px;">
-            <div class="container">
-              <div class="center">
+            <br>
+            <span class="badge bg-dark">Skills</span>
+            <span class="badge bg-secondary">{{job.skills}}</span><span class="badge bg-secondary">Secondary</span>
+            <br></br>
+            <button type="button" class="btn btn-bg-light bg-info text-dark">
+              Vacancies <span class="badge bg-secondary">{{job.no_of_vacancies}}</span>
+            </button>
+              <br></br>
+               {% if job.id in applied_list %}
+                   <button type="submit" class="btn btn-success">Already Applied!</button>
+               {% else %}
+                 <form action="applied/{{job.id}}" method="post">
+                   {% csrf_token %}
+                   <input type="hidden" value="{{user.first_name}} {{user.last_name}}" name="name">
+                   <input type="hidden" value="{{user.email}}" name="email">
+                   {% if job.job_closed %}
+                   <button type="submit" class="btn btn-danger disabled">Applications Closed!</button>
+                   {% else %}
+                   <button type="submit" class="btn btn-secondary">Apply Now!</button>
+                   {% endif %}
+                 </form>
+               {% endif %}
 
-                {% if job.id in applied_list %}
-                    <button type="submit" class="btn btn-success">Already Applied!</button>
-                {% else %}
-                  <form action="applied/{{job.id}}" method="post">
-                    {% csrf_token %}
-                    <input type="hidden" value="{{user.first_name}} {{user.last_name}}" name="name">
-                    <input type="hidden" value="{{user.email}}" name="email">
-                    {% if job.job_closed %}
-                    <button type="submit" class="btn btn-danger disabled">Closed!</button>
-                    {% else %}
-                    <button type="submit" class="btn btn-secondary">Apply</button>
-                    {% endif %}
-                  </form>
-                {% endif %}
-
-             
-              
-              </div>
-             </div>
              </div>
            </div>
            </div>
